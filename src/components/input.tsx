@@ -1,10 +1,12 @@
-interface InputProps {
+import { InputHTMLAttributes } from 'react'
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
   error?: string
   placeholder?: string
 }
 
-export function Input({ label, error, placeholder }: InputProps) {
+export function Input({ label, error, placeholder, ...rest }: InputProps) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between">
@@ -15,6 +17,7 @@ export function Input({ label, error, placeholder }: InputProps) {
         type="text"
         className="rounded bg-slate-700 border-2 border-slate-600 outline-none p-2"
         placeholder={placeholder}
+        {...rest}
       />
     </div>
   )
